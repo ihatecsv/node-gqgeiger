@@ -58,6 +58,20 @@ class GQGeiger {
 		this.reqData("<GETSERIAL>>", this.processSerial, callback);
 	}
 	
+	processTemp(buffer, callback){
+		const integerPart = buffer.readUInt8(0);
+		const decimalPart = buffer.readUInt8(1);
+		const negative = buffer.readUInt8(2);
+		let temp = parseFloat(integerPart + "." + decimalPart);
+		if(negative){
+			temp = 0 - temp;
+		}
+		callback(null, temp);
+	}
+	getTemp(callback){
+		this.reqData("<GETTEMP>>", this.processTemp, callback);
+	}
+	
 	reboot(){
 		this.sendCommand("<REBOOT>>");
 	}
