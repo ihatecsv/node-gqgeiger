@@ -1,4 +1,4 @@
-var SerialPort = require("serialport");
+const SerialPort = require("serialport");
 
 class GQGeiger {
 	constructor(port, baud){
