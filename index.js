@@ -11,6 +11,10 @@ class GQGeiger {
 		});
 	}
 	
+	sendCommand(command){
+		this.geigerPort.write(new Buffer(command, 'ascii'), function(err, results){});
+	}
+	
 	reqData(command, processFunc, callback){
 		const tempThis = this;
 		this.geigerPort.write(new Buffer(command, 'ascii'), function(err, results){
@@ -44,6 +48,22 @@ class GQGeiger {
 	}
 	getVoltage(callback){
 		this.reqData("<GETVOLT>>", this.processVoltage, callback);
+	}
+	
+	processSerial(buffer, callback){
+		const serial = buffer.toString('hex');
+		callback(null, serial);
+	}
+	getSerial(callback){
+		this.reqData("<GETSERIAL>>", this.processSerial, callback);
+	}
+	
+	reboot(){
+		this.sendCommand("<REBOOT>>");
+	}
+	
+	powerOff(){
+		this.sendCommand("<POWEROFF>>");
 	}
 }
 
