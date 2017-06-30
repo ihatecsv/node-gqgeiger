@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ihatecsv/node-gqgeiger/issues"
   },
-  "homepage": "https://github.com/ihatecsv/node-gqgeiger#readme"
+  "homepage": "https://github.com/ihatecsv/node-gqgeiger#readme",
+  "dependencies": {
+    "serialport": "^4.0.7"
+  }
 }
