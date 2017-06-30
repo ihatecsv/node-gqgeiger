@@ -1,4 +1,6 @@
 # node-gqgeiger
+[![NPM](https://nodei.co/npm/gqgeiger.png)](https://nodei.co/npm/gqgeiger/)
+
 An abstraction library for communicating with the GQ Electronics GMC range of Geiger counters
 
 ## Note for Windows users
