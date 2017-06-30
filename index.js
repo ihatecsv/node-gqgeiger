@@ -65,6 +65,10 @@ class GQGeiger {
 	powerOff(){
 		this.sendCommand("<POWEROFF>>");
 	}
+	
+	powerOn(){
+		this.sendCommand("<POWERON>>");
+	}
 }
 
 module.exports = GQGeiger;
