@@ -11,7 +11,7 @@ class GQGeiger {
 	}
 	
 	processCPM(callback, buffer){
-		cpm = buff.readUInt16BE(0);
+		cpm = buffer.readUInt16BE(0);
 		callback(null, cpm);
 	}
 	getCPM(callback){
