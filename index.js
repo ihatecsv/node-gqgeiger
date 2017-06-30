@@ -37,6 +37,14 @@ class GQGeiger {
 	getSPH(callback){
 		this.reqData("<GETCPM>>", this.processSPH, callback);
 	}
+	
+	processVoltage(buffer, callback){
+		const voltage = buffer.readUInt8(0)/10;
+		callback(null, voltage);
+	}
+	getVoltage(callback){
+		this.reqData("<GETVOLT>>", this.processVoltage, callback);
+	}
 }
 
 module.exports = GQGeiger;
