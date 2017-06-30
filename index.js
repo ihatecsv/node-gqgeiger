@@ -7,23 +7,35 @@ class GQGeiger {
 		const tempThis = this;
 		this.geigerPort.on('data', function(data) {
 			const cD = tempThis.queue.shift();
-			cD.internalCallback(cD.externalCallback, data);
+			cD.internalCallback(data, cD.externalCallback);
 		});
 	}
 	
-	processCPM(callback, buffer){
-		const cpm = buffer.readUInt16BE(0);
-		callback(null, cpm);
-	}
-	getCPM(callback){
+	reqData(command, processFunc, callback){
 		const tempThis = this;
-		this.geigerPort.write(new Buffer("<GETCPM>>", 'ascii'), function(err, results){
+		this.geigerPort.write(new Buffer(command, 'ascii'), function(err, results){
 			if(err){
 				callback(err, null);
 				return;
 			}
-			tempThis.queue.push({internalCallback: tempThis.processCPM, externalCallback: callback});
+			tempThis.queue.push({internalCallback: processFunc, externalCallback: callback});
 		});
+	}
+	
+	processCPM(buffer, callback) {
+		const cpm = buffer.readUInt16BE(0);
+		callback(null, cpm);
+	}
+	getCPM(callback){
+		this.reqData("<GETCPM>>", this.processCPM, callback);
+	}
+	
+	processSPH(buffer, callback){
+		const sph = (buffer.readUInt16BE(0)/200)*0.000001;
+		callback(null, sph);
+	}
+	getSPH(callback){
+		this.reqData("<GETCPM>>", this.processSPH, callback);
 	}
 }
 
