@@ -31,7 +31,7 @@ class GQGeiger {
 	}
 	
 	processSPH(buffer, callback){
-		const sph = (buffer.readUInt16BE(0)/200)*0.000001;
+		const sph = (buffer.readUInt16BE(0)/200);
 		callback(null, sph);
 	}
 	getSPH(callback){
