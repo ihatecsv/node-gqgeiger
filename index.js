@@ -72,6 +72,17 @@ class GQGeiger {
 		this.reqData("<GETTEMP>>", this.processTemp, callback);
 	}
 	
+	processGyro(buffer, callback){
+		let gyro = {};
+		gyro.x = buffer.slice(0, 2);
+		gyro.y = buffer.slice(2, 4);
+		gyro.z = buffer.slice(4, 6);
+		callback(null, gyro);
+	}
+	getGyro(callback){
+		this.reqData("<GETGYRO>>", this.processGyro, callback);
+	}
+	
 	reboot(){
 		this.sendCommand("<REBOOT>>");
 	}
