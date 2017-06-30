@@ -34,12 +34,12 @@ class GQGeiger {
 		this.reqData("<GETCPM>>", this.processCPM, callback);
 	}
 	
-	processSPH(buffer, callback){
-		const sph = (buffer.readUInt16BE(0)/200);
-		callback(null, sph);
+	processDoseRate(buffer, callback){
+		const doseRate = buffer.readUInt16BE(0)/200;
+		callback(null, doseRate);
 	}
-	getSPH(callback){
-		this.reqData("<GETCPM>>", this.processSPH, callback);
+	getDoseRate(callback){
+		this.reqData("<GETCPM>>", this.processDoseRate, callback);
 	}
 	
 	processVoltage(buffer, callback){
