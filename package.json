@@ -1,6 +1,6 @@
 {
   "name": "gqgeiger",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An abstraction library for communicating with the GQ Electronics GMC range of Geiger counters",
   "main": "index.js",
   "scripts": {
