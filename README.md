@@ -6,6 +6,11 @@ An abstraction library for communicating with the GQ Electronics GMC range of Ge
 ## Note for Windows users
 If you are having trouble connecting your Geiger counter via USB, it's possible that the latest Prolific drivers on your PC are rejecting the chip in the device. Click [here](http://www.totalcardiagnostics.com/support/Knowledgebase/Article/View/92/20/prolific-usb-to-serial-fix-official-solution-to-code-10-error) for a fix!
 
+# Confirmed compatibility
+* GMC-320 Plus
+
+Please make a pull request for this README if the library works on your (different) counter!
+
 # Install
 ```
 npm install --save gqgeiger
