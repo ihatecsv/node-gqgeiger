@@ -12,7 +12,7 @@ If you are having trouble connecting your Geiger counter via USB, it's possible 
 Please make a pull request for this README if the library works on your (different) counter!
 
 # Install
-```
+```bash
 npm install --save gqgeiger
 ```
 
