@@ -27,6 +27,7 @@ setInterval(function(){
 	myGeiger.getCPM(function(err, cpm){
 		if(err){
 			console.log(err);
+			return;
 		}
 		console.log(cpm);
 	});
